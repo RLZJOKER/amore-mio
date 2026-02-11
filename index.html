@@ -61,7 +61,7 @@
 </div>
 
   
-</div>
+
 
 
 <div class="container">
@@ -80,6 +80,8 @@
       <p>39,99 €</p>
       <button onclick="add('Boîte Passion', 39.99)">Ajouter</button>
     </div>
+</div> <!-- ferme .products -->
+</div> <!-- ferme .container -->
 
     <div class="product">
       <img src="anniversaire.jpg" alt="Boîte Anniversaire">
@@ -92,33 +94,26 @@
 </div>
 
 <script>
-let cart = [];
-let total = 0;
+  let cart = [];
+  let total = 0;
 
-function add(name, price) {
-  cart.push({ name, price });
-  total += price;
-  document.getElementById("count").innerText = cart.length;
-  document.getElementById("total").innerText = total.toFixed(2);
-}
+  function add(name, price) {
+    cart.push({ name, price });
+    total += price;
+    document.getElementById("count").innerText = cart.length;
+    document.getElementById("total").innerText = total.toFixed(2);
+  }
 
-async function checkout() {
-  const res = await fetch("/api/checkout", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(cart)
-  });
-  const data = await res.json();
-  window.location.href = data.url;
-}
+  function checkout() {
+    window.location.href = "https://buy.stripe.com/4gH4gza5o9ASdHcEnUfC00";
+  }
+
+
 </script>
+
 
 </body>
 </html>
-
-
-
-
 
 
 
